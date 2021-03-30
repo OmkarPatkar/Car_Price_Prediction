@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #000;">
+    
+ <div class="login">
+	<h1>CAR PRICE PREDICTION</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+    	<input name="Year" type="number" placeholder="Year in which you bought the car?" required="required" />
+
+        <input name="Present_Price" required="required" placeholder="What is the Showroom Price?(In lakhs ex: 10)" />
+
+        <input name="Kms_Driven" required="required" placeholder="How Many Kilometers Drived?" />
+
+        <input name="Owner" required="required" placeholder="How much owners previously had the car(0 or 1 or 3) ?" />
+
+        <select name="Fuel_Type_Petrol" required="required" placeholder="What Is the Fuel type?" />
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+        </select>
+
+        <select name="Seller_Type_Individual" required="required" placeholder="Are you A Dealer or Individual" />
+            <option value="Dealer">Dealer</option>
+            <option value="Individual">Individual</option>
+        </select>
+
+        <select name="Transmission_Mannual" required="required" placeholder="Transmission type" />
+            <option value="Mannual">Manual Car</option>
+            <option value="Automatic">Automatic Car</option>
+        </select>
+
+        <br>
+        <br>
+
+        <button type="submit " class="btn btn-primary btn-block btn-large">Calculate the Selling Price</button>
+
+    </form>
+
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
